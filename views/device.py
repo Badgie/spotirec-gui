@@ -1,7 +1,7 @@
 import PySimpleGUI as sg
 from spotirec import conf
-from models import SpotirecButton
-from static import EXIT
+from .models import SpotirecButton
+from .static import EXIT
 
 
 class DeviceView:
@@ -17,7 +17,6 @@ class DeviceView:
                            element_justification='center')
         while True:
             event, values = window.read()
-            print(event)
             if event in EXIT:
                 break
 

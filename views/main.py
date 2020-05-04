@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
-from models import SpotirecButton
-from static import THEME, EXIT
-from customize import CustomizeView
-from device import DeviceView
-from playlist import PlaylistView
+from .models import SpotirecButton
+from .static import THEME, EXIT
+from .customize import CustomizeView
+from .device import DeviceView
+from .playlist import PlaylistView
 
 
 class MainView:
@@ -25,7 +25,7 @@ class MainView:
         sg.theme_element_text_color(THEME['TEXT'])
         sg.theme_input_text_color(THEME['TEXT_INPUT'])
 
-        header_img = sg.Image(filename='img/header/header-200x67.png',
+        header_img = sg.Image(filename='assets/img/header/header-200x67.png',
                               size=(self.WIDTH, self.HEIGHT // 4))
 
         playlist_btn = SpotirecButton('Playlists')
@@ -56,6 +56,3 @@ class MainView:
                 break
 
         window.close()
-
-
-MainView()

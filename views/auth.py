@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 from tkinter import Tk
-from tk_html_widgets import HTMLLabel
+# from tk_html_widgets import HTMLLabel
 from requests import get
 from spotirec import oauth2, log
 
