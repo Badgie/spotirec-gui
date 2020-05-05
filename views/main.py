@@ -8,7 +8,7 @@ from .playlist import PlaylistView
 
 class MainView:
     WIDTH = 220
-    HEIGHT = 350
+    HEIGHT = 400
 
     def __init__(self):
         sg.theme_background_color(THEME['BACKGROUND'])
@@ -32,12 +32,14 @@ class MainView:
         device_btn = SpotirecButton('Devices')
         config_btn = SpotirecButton('Customize')
         recom_btn = SpotirecButton('Recommend')
+        exit_btn = SpotirecButton('Exit', button='red')
 
         layout = [[header_img],
                   [playlist_btn],
                   [device_btn],
                   [config_btn],
-                  [recom_btn]]
+                  [recom_btn],
+                  [exit_btn]]
 
         window = sg.Window('Spotirec', layout=layout, size=(self.WIDTH, self.HEIGHT),
                            element_justification='center')
