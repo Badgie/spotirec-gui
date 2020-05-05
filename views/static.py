@@ -11,5 +11,10 @@ THEME = {'BACKGROUND': '#1C2F39',
          'SLIDER_DEPTH': 0,
          'PROGRESS_DEPTH': 0}
 
-# exit events
-EXIT = [None, 'Cancel']
+# exit events; None = mod+shift+q
+EXIT = [None, 'Cancel', 'Exit']
+
+# recommendation schemes
+SCHEMES = ['Top genres', 'Top tracks', 'Top artists', 'Recently saved tracks', 'Custom genre seeds',
+           'Custom top genres', 'Custom top tracks', 'Custom top artists', 'Custom saved tracks',
+           'Custom']
