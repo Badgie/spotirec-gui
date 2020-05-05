@@ -83,6 +83,7 @@ class CustomizeView:
         # buttons
         save_btn = SpotirecButton('Save')
         cancel_btn = SpotirecButton('Cancel', button='red')
+        btn_frame = sg.Frame('', [[save_btn, cancel_btn]], border_width=0)
 
         # construct layout matrix
         self.layout = [[self.scheme_frame],
@@ -94,11 +95,10 @@ class CustomizeView:
                        [self.device_frame],
                        [tuning_add_btn],
                        [self.tuning_frame],
-                       [save_btn, cancel_btn]]
+                       [btn_frame]]
 
         # window
         self.window = self._create_window()
-        self.window.finalize()
 
         # application loop
         while True:
@@ -117,13 +117,12 @@ class CustomizeView:
             if event == 'play':
                 self.device_frame.update(visible=values['play'])
                 self.device_add.update(visible=values['play'])
-                self.window.refresh()
 
             # update view depending on selected scheme
             if event == 'scheme':
                 self._update_scheme_opts(values['scheme'])
 
-            # break loop on exit
+            # break loop on exit event
             if event in EXIT:
                 break
 
@@ -193,8 +192,8 @@ class CustomizeView:
                                                        spotirec.headers)['items']}
             elif 'saved tracks' in scheme:
                 data = {f'{x["track"]["name"]} -> {x["track"]["artists"][0]["name"]}':
-                            x['track']['uri'] for x in self.API.get_saved_tracks(spotirec.headers,
-                                                                                 limit=50)['items']}
+                        x['track']['uri'] for x in self.API.get_saved_tracks(spotirec.headers,
+                                                                             limit=50)['items']}
             elif 'genre seeds' in scheme:
                 data = self.API.get_genre_seeds(spotirec.headers)['genres']
 
@@ -203,7 +202,6 @@ class CustomizeView:
                 for y in x:
                     y.update(visible=True, values=[''] + self.__data(data))
                 self.seed_box.update(visible=True)
-        self.window.refresh()
 
     def _validate(self, values: dict):
         pass
